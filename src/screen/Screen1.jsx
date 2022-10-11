@@ -2,18 +2,27 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import BasicPagination from '../component/pagination/Pagination';
+import './Screen1.css';
 
 const Screen1 = () => {
 
     const [char, setChar] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [recordsPerPage] = useState(10);
     let navigate = useNavigate();
 
     const charFunction = async () => {
         const charData = await axios.get(`https://akabab.github.io/starwars-api/api/all.json`);
         console.log(charData.data);
         setChar(charData.data);
+        setLoading(false);
     }
 
+    const indexOfLastRecord = currentPage * recordsPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    const currentRecords = char.slice(indexOfFirstRecord, indexOfLastRecord);
+    const nPages = Math.ceil(char.length / recordsPerPage)
 
     useEffect(() => {
         charFunction();
@@ -24,19 +33,23 @@ const Screen1 = () => {
     }
 
     return (
-        <>
-            <BasicPagination />
-            <div className='Characters_container'>
+        <div className='main_container'>
+            <BasicPagination
+                nPages={nPages}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+            />
+            <div className='characters_container'>
                 {
-                    char && char.map(list => (
-                        <div>
-                            <img src={list.image} alt={list.name} />
-                            <h2 onClick={() => charDetails(list.id)}>{list.name}</h2>
+                    currentRecords && currentRecords.map(list => (
+                        <div onClick={() => charDetails(list.id)}>
+                            <img src={list.image} alt={list.name} className='image' />
+                            <h2 >{list.name}</h2>
                         </div>
                     ))
                 }
             </div >
-        </>
+        </div>
     )
 }
 
