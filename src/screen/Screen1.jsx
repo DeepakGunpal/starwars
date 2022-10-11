@@ -7,7 +7,6 @@ import './Screen1.css';
 const Screen1 = () => {
 
     const [char, setChar] = useState([]);
-    const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(10);
     let navigate = useNavigate();
@@ -16,7 +15,6 @@ const Screen1 = () => {
         const charData = await axios.get(`https://akabab.github.io/starwars-api/api/all.json`);
         console.log(charData.data);
         setChar(charData.data);
-        setLoading(false);
     }
 
     const indexOfLastRecord = currentPage * recordsPerPage;
