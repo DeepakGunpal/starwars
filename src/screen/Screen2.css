@@ -1,0 +1,27 @@
+.details_container{
+    padding: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    color: white;
+    background-image: url(https://wallpapercave.com/wp/CJVyY3G.jpg);
+    height: 100vh;
+}
+
+.screen2_image{
+    width: 400px;
+    height: 500px;
+    margin-left: 70px;
+    margin-top: 60px;
+    border-radius: 15px;
+}
+
+.films_container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: rgb(100, 100, 98);
+    padding: 15px;
+    border-radius: 10px;
+}

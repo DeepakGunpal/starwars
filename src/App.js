@@ -7,7 +7,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Star Wars</h1>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Screen1 />} />

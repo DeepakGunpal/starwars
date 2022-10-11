@@ -32,21 +32,24 @@ const Screen1 = () => {
 
     return (
         <div className='main_container'>
+            <h1 >Star Wars</h1>
             <BasicPagination
                 nPages={nPages}
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
+
             />
             <div className='characters_container'>
                 {
                     currentRecords && currentRecords.map(list => (
-                        <div onClick={() => charDetails(list.id)}>
+                        <div onClick={() => charDetails(list.id)} className='char_container'>
                             <img src={list.image} alt={list.name} className='image' />
                             <h2 >{list.name}</h2>
                         </div>
                     ))
                 }
             </div >
+
         </div>
     )
 }

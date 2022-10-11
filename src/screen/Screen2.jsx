@@ -1,16 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import './Screen2.css';
 
 const Screen2 = () => {
     const [people, setPeople] = useState({});
+    const [charImg, setCharImg] = useState('');
     const { charId } = useParams();
 
-    console.log(charId);
     const peopleDetails = async (charId) => {
         const data = await axios.get(`https://swapi.dev/api/people/${charId}/`);
-        console.log(data.data);
         setPeople(data.data);
+        const imgData = await axios.get(`https://akabab.github.io/starwars-api/api/id/${charId}.json`);
+        setCharImg(imgData.data.image);
     }
 
     useEffect(() => {
@@ -18,22 +20,33 @@ const Screen2 = () => {
     }, [charId]);
 
     return (
-        <div>
-            Screen2 - {charId}
-            {
-                people && <div>
-                    <h3>{people.name}</h3>
-                    <h3>{people.birth_year}</h3>
-                    <h3>{people.gender}</h3>
-                    <h3>{people.height}</h3>
+        <>
+            <div className='details_container'>
+                <img src={charImg} alt={people.name} className='screen2_image' />
+                <div>
+                    {
+                        people && <div>
+                            <h3>Name: {people.name}</h3>
+                            <h3>Birth Year: {people.birth_year}</h3>
+                            <h3>Gender: {people.gender}</h3>
+                            <h3>Height: {people.height}</h3>
+                            <h3>Hair Color: {people.hair_color}</h3>
+                            <h3>Skin Color: {people.skin_color}</h3>
+                            <h3>Eye Color: {people.eye_color}</h3>
+                            <h3>Home World: {people.homeworld}</h3>
+                        </div>
+                    }
                 </div>
-            }
-            {
-                people.films && people.films.length > 0 && people.films.map(film => (
-                    <div>{film}</div>
-                ))
-            }
-        </div>
+                <div className='films_container'>
+                    <h4>{people.name} Movies</h4>
+                    {
+                        people.films && people.films.length > 0 && people.films.map(film => (
+                            <div>{film}</div>
+                        ))
+                    }
+                </div>
+            </div>
+        </>
     )
 }
 
