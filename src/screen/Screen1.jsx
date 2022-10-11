@@ -9,19 +9,17 @@ const Screen1 = () => {
     let navigate = useNavigate();
 
     const charFunction = async () => {
-        const charData = await axios.get(`https://swapi.dev/api/people/?page=${1}`);
-        console.log(charData.data.results);
-        setChar(charData.data.results);
+        const charData = await axios.get(`https://akabab.github.io/starwars-api/api/all.json`);
+        console.log(charData.data);
+        setChar(charData.data);
     }
+
 
     useEffect(() => {
         charFunction();
     }, []);
 
-    const charDetails = (url) => {
-        console.log('working', url)
-        url = url.split('/');
-        const id = url[url.length - 2];
+    const charDetails = (id) => {
         navigate(`/details/${id}`);
     }
 
@@ -32,7 +30,8 @@ const Screen1 = () => {
                 {
                     char && char.map(list => (
                         <div>
-                            <h2 onClick={() => charDetails(list.url)}>{list.name}</h2>
+                            <img src={list.image} alt={list.name} />
+                            <h2 onClick={() => charDetails(list.id)}>{list.name}</h2>
                         </div>
                     ))
                 }
