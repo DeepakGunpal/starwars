@@ -6,6 +6,7 @@ const Screen2 = () => {
     const [people, setPeople] = useState({});
     const { charId } = useParams();
 
+    console.log(charId);
     const peopleDetails = async (charId) => {
         const data = await axios.get(`https://swapi.dev/api/people/${charId}/`);
         console.log(data.data);

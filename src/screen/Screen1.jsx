@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import BasicPagination from '../component/pagination/Pagination';
 
-const Screen1 = ({ setCharId }) => {
+const Screen1 = () => {
 
     const [char, setChar] = useState([]);
     let navigate = useNavigate();
@@ -22,7 +22,6 @@ const Screen1 = ({ setCharId }) => {
         console.log('working', url)
         url = url.split('/');
         const id = url[url.length - 2];
-        setCharId(id);
         navigate(`/details/${id}`);
     }
 
