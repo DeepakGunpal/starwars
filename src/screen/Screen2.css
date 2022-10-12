@@ -11,8 +11,9 @@
     background-position: center;
 }
 
-.screen2_main_container > h1{
+.screen2_main_container h1{
     background-color: black;
+    padding: 2px;
 }
 
 .screen2_image{
