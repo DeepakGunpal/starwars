@@ -13,9 +13,9 @@ const Favourite = () => {
         navigate(`/details/${id}`);
     }
 
-    function deletePeople(id) {
+    function deletePeople(deletedId) {
         const updatedPeople = items.filter(item => {
-            return id !== item.id;
+            return deletedId !== item.id;
         });
         setItems(updatedPeople);
         localStorage.setItem('favChar', JSON.stringify(updatedPeople));
