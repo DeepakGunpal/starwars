@@ -10,12 +10,11 @@ export default function BasicPagination({ nPages, currentPage, setCurrentPage })
 
   return (
     <Stack spacing={1}>
-      <Pagination count={nPages} color="primary" page={currentPage} onChange={changePage} size='large'
+      <Pagination count={nPages} color="primary" page={currentPage} onChange={changePage} size='small'
         style={{
           backgroundColor: 'white',
           color: 'white',
           padding: '5px',
-          fontSize: '20px',
           borderRadius: '5px'
         }}
       />

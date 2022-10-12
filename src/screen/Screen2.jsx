@@ -23,7 +23,7 @@ const Screen2 = () => {
         <>
             <div className='details_container'>
                 <img src={charImg} alt={people.name} className='screen2_image' />
-                <div>
+                <div className='details_content'>
                     {
                         people && <div>
                             <h3>Name: {people.name}</h3>

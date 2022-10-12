@@ -31,3 +31,21 @@
     background-image: url(https://wallpapercave.com/wp/CJVyY3G.jpg);
   height: fit-content;
 }
+
+/* ==========Media  Queries (medium devices) =============*/
+
+@media screen and (max-width: 1024px) {
+    .characters_container{
+        margin: 20px;
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+/* ==========Media  Queries (small devices) =============*/
+
+@media screen and (max-width: 600px) {
+    .characters_container{
+        margin: 15px;
+        grid-template-columns: repeat(2,1fr);
+    }
+}
