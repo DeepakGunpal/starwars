@@ -8,9 +8,9 @@ import IconButton from '@mui/material/IconButton';
 import { Button } from '@mui/material';
 
 const Screen1 = () => {
-
+    const getLocalItems = localStorage.getItem('favChar') !== null ? JSON.parse(localStorage.getItem('favChar')) : []
     const [char, setChar] = useState([]);
-    const [fav, setFav] = useState([]);
+    const [fav, setFav] = useState(getLocalItems);
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(10);
     let navigate = useNavigate();
@@ -35,8 +35,11 @@ const Screen1 = () => {
 
     function handleFav(list) {
         setFav([...fav, list])
-        localStorage.setItem('favChar', JSON.stringify([...new Set(fav)]));
     }
+
+    useEffect(() => {
+        localStorage.setItem('favChar', JSON.stringify([...new Set(fav)]));
+    }, [fav])
 
     function favList() {
         navigate('/favourites');
