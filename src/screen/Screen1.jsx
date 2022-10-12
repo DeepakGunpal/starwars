@@ -6,6 +6,8 @@ import './Screen1.css';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
 import { Button } from '@mui/material';
+import logo from '../logo.png'
+
 
 const Screen1 = () => {
     const getLocalItems = localStorage.getItem('favChar') !== null ? JSON.parse(localStorage.getItem('favChar')) : []
@@ -47,7 +49,8 @@ const Screen1 = () => {
 
     return (
         <div className='main_container'>
-            <h1 >Star Wars</h1>
+            <br></br>
+            <img src={logo} alt='logo' className='logo_image_main' />
             <div className='saved_list_button'>
                 <Button style={{
                     color: 'white',

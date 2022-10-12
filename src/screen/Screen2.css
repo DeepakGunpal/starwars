@@ -11,9 +11,12 @@
     background-position: center;
 }
 
-.screen2_main_container h1{
-    background-color: black;
-    padding: 2px;
+.logo_image{
+    margin: 15px;
+    border-radius: 12px;
+    position: absolute;
+    top: 8px;
+    left: 3%;
 }
 
 .screen2_image{
@@ -43,6 +46,11 @@
         display: grid;
         grid-template-columns: 2fr 1fr;
     }
+    .logo_image{
+        position: static;
+        margin-bottom: 2px;
+        margin-left: 30%;
+    }
 }
 
 /* ==========Media  Queries (small devices) =============*/
@@ -70,5 +78,8 @@
 
     .details_content{
         margin-left: 25px;
+    }
+    .logo_image{
+        margin-left: 10%;
     }
 }

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import './Screen2.css';
+import logo from '../logo.png'
 
 const Screen2 = () => {
     const [people, setPeople] = useState({});
@@ -32,7 +33,7 @@ const Screen2 = () => {
 
     return (
         <div className='screen2_main_container'>
-            <Link to='/' ><h1 >Star Wars</h1></Link>
+            <Link to='/' ><img src={logo} alt='logo' className='logo_image' /> </Link>
             <div className='details_container'>
                 <img src={charImg} alt={people.name} className='screen2_image' />
                 <div className='details_content'>
