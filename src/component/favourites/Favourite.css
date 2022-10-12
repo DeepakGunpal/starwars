@@ -3,8 +3,9 @@
     grid-template-columns: repeat(4,1fr);
     gap: 2rem;
     width: 83vw;
-    
 }
+
+
 
 .fav_main_container{
     background-image: url(https://wallpaper.dog/large/966381.jpg);
@@ -22,4 +23,69 @@
     padding: 5px;
     border-radius: 10px;
     margin: 22px;
+}
+
+.clear_favlist_button{
+    position: absolute;
+    top: 25px;
+    right: 25px;
+}
+
+/* ==========Media  Queries (medium devices) =============*/
+
+@media screen and (max-width: 1024px) {
+    .fav_container{    
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 2rem;
+        width: fit-content;
+    }
+    .fav_main_container{
+        height: fit-content;
+    }
+    .clear_favlist_button{
+        position: static;
+        padding: 20px;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        align-items: center;
+    }
+    .clear_favlist_button h1{
+        background-color: black;
+        padding: 4px 10px;
+        border-radius: 10px;
+    }
+
+}
+
+/* ==========Media  Queries (small devices) =============*/
+
+@media screen and (max-width: 600px) {
+    .clear_favlist_button{
+        position: static;
+        padding: 10px;
+        justify-content: center;
+    }
+    .fav_char_container{
+        padding: 5px;
+        margin: 20px;
+        width: 230px;
+    }
+    .fav_container{    
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        margin-left: 35px;
+        
+    }
+    .fav_container > h1{
+        background-color: white;
+        color: black;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        padding: 5px 15px;
+    }
 }

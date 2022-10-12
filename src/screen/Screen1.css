@@ -40,8 +40,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url(https://wallpapercave.com/wp/CJVyY3G.jpg);
-    height: fit-content;
+    background-image: url(https://starwarsblog.starwars.com/wp-content/uploads/2020/04/star-wars-backgrounds-25.jpg);
+    height: 48rem;
+}
+
+.saved_list_button{
+    position: absolute;
+    top: 25px;
+    right: 25px;
 }
 
 /* ==========Media  Queries (medium devices) =============*/
@@ -51,6 +57,9 @@
         margin: 20px;
         grid-template-columns: repeat(3,1fr);
     }
+    .main_container{
+        height: 85rem;
+    }
 }
 
 /* ==========Media  Queries (small devices) =============*/
@@ -58,6 +67,13 @@
 @media screen and (max-width: 600px) {
     .characters_container{
         margin: 15px;
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(1,1fr);
+    }
+    .main_container{
+        height: fit-content;
+    }
+    .saved_list_button{
+        position: static;
+        margin-bottom: 20px;
     }
 }

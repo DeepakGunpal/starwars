@@ -45,15 +45,15 @@ const Screen1 = () => {
     return (
         <div className='main_container'>
             <h1 >Star Wars</h1>
-            <Button style={{
-                position: 'absolute', top: '25px',
-                right: '25px', color: 'white',
-                backgroundColor: 'red', fontSize: 'medium',
-                fontWeight: 'bold'
-            }}
-                variant="contained"
-                onClick={favList}
-            >Saved People</Button>
+            <div className='saved_list_button'>
+                <Button style={{
+                    color: 'white',
+                    backgroundColor: 'red', fontSize: 'medium',
+                    fontWeight: 'bold'
+                }}
+                    variant="contained"
+                    onClick={favList}
+                >Saved People</Button></div>
             <BasicPagination
                 nPages={nPages}
                 currentPage={currentPage}

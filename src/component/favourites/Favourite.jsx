@@ -1,6 +1,6 @@
 import { Button, IconButton } from '@mui/material';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './Favourite.css';
 
@@ -25,17 +25,20 @@ const Favourite = () => {
     console.log("charData", items)
     return (
         <div className='fav_main_container'>
-            <Button style={{
-                position: 'absolute', top: '25px',
-                right: '25px', color: 'white',
-                backgroundColor: 'red', fontSize: 'medium',
-                fontWeight: 'bold'
-            }}
-                variant="contained"
-                onClick={clearList}
-            >Clear Favourite list</Button>
+
+            <div className='clear_favlist_button'>
+                <Button style={{
+                    color: 'white',
+                    backgroundColor: 'red', fontSize: 'medium',
+                    fontWeight: 'bold'
+                }}
+                    variant="contained"
+                    onClick={clearList}
+                >Clear Favourite list</Button>
+                <Link to='/' ><h1 >Star Wars</h1></Link>
+            </div>
             <div className='fav_container'>
-                <h1>Favourite Characters </h1>
+                <h1>Favourite <br /> Characters </h1>
                 {
                     items && items.map(list => (
                         <div className='fav_char_container' key={list.id}>

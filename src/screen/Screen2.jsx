@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './Screen2.css';
 
 const Screen2 = () => {
@@ -20,7 +20,8 @@ const Screen2 = () => {
     }, [charId]);
 
     return (
-        <>
+        <div className='screen2_main_container'>
+        <Link to='/' ><h1 >Star Wars</h1></Link>
             <div className='details_container'>
                 <img src={charImg} alt={people.name} className='screen2_image' />
                 <div className='details_content'>
@@ -46,7 +47,7 @@ const Screen2 = () => {
                     }
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
