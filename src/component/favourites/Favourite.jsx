@@ -1,28 +1,31 @@
 import { Button, IconButton } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import DeleteIcon from '@mui/icons-material/Delete';
 import './Favourite.css';
 
 const Favourite = () => {
     const navigate = useNavigate();
-    const items = localStorage.getItem('favChar') !== null ? JSON.parse(localStorage.getItem('favChar')) : []
-    console.log('favItems', items)
+    let getLocalItems = localStorage.getItem('favChar') !== null ? JSON.parse(localStorage.getItem('favChar')) : []
+    const [items, setItems] = useState(getLocalItems)
 
     const charDetails = (id) => {
         navigate(`/details/${id}`);
     }
 
-    function handleFav(list) {
-
+    function deletePeople(id) {
+        const updatedPeople = items.filter(item => {
+            return id !== item.id;
+        });
+        setItems(updatedPeople);
+        localStorage.setItem('favChar', JSON.stringify(updatedPeople));
     }
 
     function clearList() {
-        localStorage.clear();
-        navigate('/favourites');
+        localStorage.removeItem('favChar');
+        setItems([]);
     }
 
-    console.log("charData", items)
     return (
         <div className='fav_main_container'>
 
@@ -51,9 +54,9 @@ const Favourite = () => {
                                 <IconButton
                                     className='fav_button'
                                     aria-label="saved"
-                                    onClick={() => handleFav(list)}
+                                    onClick={() => deletePeople(list.id)}
                                 >
-                                    <FavoriteIcon />
+                                    <DeleteIcon style={{ color: 'white' }} />
                                 </IconButton>
                             </abbr>
                         </div>
