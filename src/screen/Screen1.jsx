@@ -3,17 +3,20 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import BasicPagination from '../component/pagination/Pagination';
 import './Screen1.css';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import IconButton from '@mui/material/IconButton';
+import { Button } from '@mui/material';
 
 const Screen1 = () => {
 
     const [char, setChar] = useState([]);
+    const [fav, setFav] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(10);
     let navigate = useNavigate();
 
     const charFunction = async () => {
         const charData = await axios.get(`https://akabab.github.io/starwars-api/api/all.json`);
-        console.log(charData.data);
         setChar(charData.data);
     }
 
@@ -30,9 +33,27 @@ const Screen1 = () => {
         navigate(`/details/${id}`);
     }
 
+    function handleFav(list) {
+        setFav([...fav, list])
+        localStorage.setItem('favChar', JSON.stringify([...new Set(fav)]));
+    }
+
+    function favList() {
+        navigate('/favourites');
+    }
+
     return (
         <div className='main_container'>
             <h1 >Star Wars</h1>
+            <Button style={{
+                position: 'absolute', top: '25px',
+                right: '25px', color: 'white',
+                backgroundColor: 'red', fontSize: 'medium',
+                fontWeight: 'bold'
+            }}
+                variant="contained"
+                onClick={favList}
+            >Saved People</Button>
             <BasicPagination
                 nPages={nPages}
                 currentPage={currentPage}
@@ -42,15 +63,27 @@ const Screen1 = () => {
             <div className='characters_container'>
                 {
                     currentRecords && currentRecords.map(list => (
-                        <div onClick={() => charDetails(list.id)} className='char_container'>
-                            <img src={list.image} alt={list.name} className='image' />
-                            <h2 >{list.name}</h2>
+                        <div className='char_container' key={list.id}>
+
+                            <div onClick={() => charDetails(list.id)} className='image_container'>
+                                <img src={list.image} alt={list.name} className='image' />
+                                <h2 >{list.name}</h2>
+                            </div>
+                            <abbr title='Mark as favourite'>
+                                <IconButton
+                                    className='fav_button'
+                                    aria-label="saved"
+                                    onClick={() => handleFav(list)}
+                                >
+                                    <FavoriteIcon />
+                                </IconButton>
+                            </abbr>
                         </div>
                     ))
                 }
             </div >
 
-        </div>
+        </div >
     )
 }
 

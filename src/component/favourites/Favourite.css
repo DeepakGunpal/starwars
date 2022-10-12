@@ -1,0 +1,25 @@
+.fav_container{    
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 2rem;
+    width: 83vw;
+    
+}
+
+.fav_main_container{
+    background-image: url(https://wallpaper.dog/large/966381.jpg);
+    height: 100vh;
+    background-position: center;
+    background-size: contain;
+}
+
+.fav_char_container{
+    background-color: rgb(81, 80, 87);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 5px;
+    border-radius: 10px;
+    margin: 22px;
+}

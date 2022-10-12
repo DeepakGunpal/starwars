@@ -15,13 +15,25 @@
     background-color: rgb(81, 80, 87);
     color: white;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
     padding: 5px;
-    gap: 0.5rem;
     border-radius: 10px;
+}
+
+.fav_button{
+    padding: 10px;    
+}
+
+.fav_button:active{
+    color: rgb(206, 116, 56);
+}
+
+.image_container{
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .main_container{
@@ -29,7 +41,7 @@
     flex-direction: column;
     align-items: center;
     background-image: url(https://wallpapercave.com/wp/CJVyY3G.jpg);
-  height: fit-content;
+    height: 100vh;
 }
 
 /* ==========Media  Queries (medium devices) =============*/
