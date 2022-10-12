@@ -6,6 +6,7 @@ import './Screen2.css';
 const Screen2 = () => {
     const [people, setPeople] = useState({});
     const [charImg, setCharImg] = useState('');
+    const [films, setFilms] = useState([]);
     const { charId } = useParams();
 
     const peopleDetails = async (charId) => {
@@ -15,13 +16,23 @@ const Screen2 = () => {
         setCharImg(imgData.data.image);
     }
 
+    const movies = async (filmsApi) => {
+        if (filmsApi) {
+            const promise = await Promise.allSettled(filmsApi.map(film => {
+                return axios.get(film).then(res => res)
+            }))
+            setFilms(promise)
+        }
+    }
+
     useEffect(() => {
         peopleDetails(charId);
-    }, [charId]);
+        movies(people.films);
+    }, [charId, people.films]);
 
     return (
         <div className='screen2_main_container'>
-        <Link to='/' ><h1 >Star Wars</h1></Link>
+            <Link to='/' ><h1 >Star Wars</h1></Link>
             <div className='details_container'>
                 <img src={charImg} alt={people.name} className='screen2_image' />
                 <div className='details_content'>
@@ -41,8 +52,8 @@ const Screen2 = () => {
                 <div className='films_container'>
                     <h4>{people.name} Movies</h4>
                     {
-                        people.films && people.films.length > 0 && people.films.map(film => (
-                            <div>{film}</div>
+                        films && films.map((film, i) => (
+                            <div key={i}>{film.value.data.title}</div>
                         ))
                     }
                 </div>
