@@ -46,7 +46,6 @@ const Screen2 = () => {
                             <h3>Hair Color: {people.hair_color}</h3>
                             <h3>Skin Color: {people.skin_color}</h3>
                             <h3>Eye Color: {people.eye_color}</h3>
-                            <h3>Home World: {people.homeworld}</h3>
                         </div>
                     }
                 </div>
